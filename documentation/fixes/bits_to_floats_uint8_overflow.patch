@@ -1,0 +1,20 @@
+--- run_sim_original.py	2026-11-01 15:53:47.442451214 +0000
++++ run_sim_fixed.py	2026-11-01 15:53:47.442527691 +0000
+@@ -49,14 +49,9 @@
+     bits = bits[:n_blocks * block_size]
+     reshaped = bits.reshape((n_blocks, block_size))
+ 
+-    vals = []
+-    for row in reshaped:
+-        v = 0
+-        for i, b in enumerate(row):
+-            v |= (b << i)
+-        vals.append(v)
+-
+-    vals = np.array(vals, dtype=np.uint32)
++    # fix: widen to uint32 before shifting (uint8 << i overflows for i >= 8)
++    weights = (1 << np.arange(block_size, dtype=np.uint32))
++    vals = (reshaped.astype(np.uint32) * weights).sum(axis=1).astype(np.uint32)
+     max_val = 2**block_size - 1
+     return (vals / max_val) * 2 - 1
+ 

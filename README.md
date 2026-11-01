@@ -1,131 +1,90 @@
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero/hero-dark.png">
+  <img src="assets/hero/hero-light.png" width="100%" alt="Shrashti Mittal, aerospace engineering notebook. MSc student in Space and Astronautical Engineering at Sapienza University of Rome. Figure 0: three thousand seconds of a simulated low-Earth orbit, drawn to scale above the Earth.">
+</picture>
 
-<img src="assets/header/hero.svg" width="100%" alt="Shrashti Mittal, Aerospace Engineer. Spacecraft systems, mission analysis and robotics. MSc student at Sapienza University of Rome. A spacecraft flies a Hohmann transfer orbit.">
+<p align="center"><a href="#on-my-workbench">Workbench</a> &nbsp;·&nbsp; <a href="#projects">Projects</a> &nbsp;·&nbsp; <a href="#robotics-and-embedded">Robotics</a> &nbsp;·&nbsp; <a href="#research">Research</a> &nbsp;·&nbsp; <a href="#toolbox">Toolbox</a> &nbsp;·&nbsp; <a href="#contact">Contact</a></p>
 
-**[Projects](#featured-projects)** &nbsp;·&nbsp; **[Robotics](#robotics)** &nbsp;·&nbsp; **[Research](#research)** &nbsp;·&nbsp; **[Skills](#skills)** &nbsp;·&nbsp; **[GitHub](https://github.com/shrashtimittal?tab=repositories)** &nbsp;·&nbsp; **[Contact](#contact)**
+I'm Shrashti, an aerospace engineer pursuing a Master's in Space and Astronautical Engineering at Sapienza University of Rome. What I enjoy most is the moment a question about a spacecraft turns into something I can run: an orbit, an estimator, a risk model. Most of what's on this page is simulation and software, and some of it is unfinished. I've tried to say which.
 
-</div>
+## On my workbench
 
-I am an aerospace engineer, currently an MSc student in **Space and Astronautical Engineering at Sapienza University of Rome**. I work across spacecraft systems, mission analysis, robotics and computational research: I frame a problem, model and simulate it, build the software or hardware, and record honestly what the results do and do not show.
+- **Now:** pursuing the MSc in Space and Astronautical Engineering at Sapienza University of Rome (2026–2028).
+- **Current focus:** documenting selected software, simulation and research work clearly, including what is implemented and what remains exploratory.
+- **Still to document:** more of my hands-on robotics and embedded-systems work.
 
-<a name="engineering-focus"></a>
-<img src="assets/sections/engineering-focus.svg" width="100%" alt="01 Engineering focus">
+<!-- Edit this list whenever it changes. Only list things that are true today. -->
 
-<table>
-<tr>
-<td width="50%" valign="top"><img src="assets/icons/space.svg" width="36" alt=""><br><b>Space systems and mission engineering</b><br>Spacecraft design, mission analysis, orbital mechanics, navigation, satellite and CubeSat systems.</td>
-<td width="50%" valign="top"><img src="assets/icons/robotics.svg" width="36" alt=""><br><b>Robotics and embedded systems</b><br>UAVs, flight controllers, microcontrollers, sensor integration and autonomous systems.</td>
-</tr>
-<tr>
-<td valign="top"><img src="assets/icons/compute.svg" width="36" alt=""><br><b>Computational engineering and AI</b><br>Scientific computing, simulation, modelling and machine learning for engineering problems.</td>
-<td valign="top"><img src="assets/icons/research.svg" width="36" alt=""><br><b>Scientific research</b><br>Astrophysics and dark matter, quantum and theoretical physics, orbital and navigation concepts.</td>
-</tr>
-</table>
+## Projects
 
-<a name="featured-projects"></a>
-<img src="assets/sections/featured-projects.svg" width="100%" alt="02 Featured projects">
+### QRNG spacecraft navigation: a simulation, and a bug
 
-Each description was checked against the repository's code. Simulations here are not flight-tested systems.
+**Status:** exploratory demo, not a set of results. &nbsp;·&nbsp; **Code:** [qrng-spacecraft-navigation](https://github.com/shrashtimittal/qrng-spacecraft-navigation) &nbsp;·&nbsp; `Python` `NumPy` `Qiskit` `Streamlit`
 
-### QRNG Spacecraft Navigation
-<a href="https://github.com/shrashtimittal/qrng-spacecraft-navigation"><img src="assets/diagrams/qrng-pipeline.svg" width="100%" alt="Simulation pipeline: bit source, Gaussian noise model, measurements, Kalman filter and RMSE, with a circular truth orbit."></a>
+The question I started with: if the measurement noise in a navigation simulation comes from a quantum random source instead of a pseudo-random one, does the filter behave any differently? To explore that I built a small pipeline. A circular low-Earth orbit is the truth, random bits become Gaussian noise, the noisy positions go into a Kalman filter, and I look at how far the estimate is from the truth.
 
-**Question:** does the source of randomness (classical pseudo-random or quantum-sourced bits) change how simulated measurement noise and drift affect a navigation filter?<br>
-**Approach:** a circular low-Earth orbit (r = 6771 km) is the truth trajectory. Random bits are converted to Gaussian noise (Box–Muller), added with a small drift to produce measurements, and a constant-velocity Kalman filter estimates the state; RMSE over time is plotted. Quantum-sourced bits come from a Qiskit Hadamard circuit or an optional public QRNG service.<br>
-**Stack:** `Python` `Qiskit` `NumPy` `Streamlit` &nbsp;·&nbsp; **[Repository →](https://github.com/shrashtimittal/qrng-spacecraft-navigation)**<br>
-<sub>Exploratory. Bits fall back to a classical generator if the quantum path is unavailable, no performance advantage is claimed, and it is not flight-validated navigation.</sub>
+<img src="assets/figures/qrng-pipeline.png" width="100%" alt="Pipeline diagram: random bits, 16-bit blocks, Box-Muller Gaussian noise, noise model; circular orbit and noise give measurements, which feed a constant-velocity Kalman filter producing an estimate and RMSE.">
 
-<br>
+One simulated run (300 steps, 10 s apart, pseudo-random bits, seed 7):
 
-### HELIO-OPS Guardian System
-<a href="https://github.com/shrashtimittal/HELIO-OPS-Guardian-System"><img src="assets/projects/helio.svg" width="100%" alt="Solar event rays and coronal mass ejection fronts reaching LEO, MEO and GEO satellite shells."></a>
+<img src="assets/figures/qrng-error-vs-time.png" width="92%" alt="Line chart of position error in metres against time: raw measurements stay near 1.5 metres while the Kalman estimate sits near 8 metres.">
 
-**Question:** how can a solar event be translated into an interpretable operational risk for satellites in different orbits?<br>
-**Approach:** an object-oriented model of solar events and satellites, with risk = magnitude × orbital exposure × (1 − shielding), a reduction for hardened spacecraft, and a safe-mode simulation with console dashboards.<br>
-**Stack:** `Python` `Jupyter` &nbsp;·&nbsp; **[Repository →](https://github.com/shrashtimittal/HELIO-OPS-Guardian-System)**<br>
-<sub>A conceptual prototype with a deliberately simplified model and generated scenarios. It does not use live space-weather data.</sub>
+The raw measurements are off by about 1.5 m on average; the filter's estimate is off by about 8 m, so the filter is making things worse. My best guess is that its constant-velocity model assumes straight-line motion between steps while the orbit curves, and I haven't tuned it yet. A model that includes orbital dynamics is the obvious next step.
 
-<br>
+**A notebook note.** While preparing this page I plotted the noise samples and they didn't look Gaussian:
 
-### Team Mimosa: Landsat 7 inspection mission study
-<img src="assets/projects/mimosa.svg" width="100%" alt="An inspector spacecraft on a relative orbit around a Landsat 7 target above Earth's limb.">
+<img src="assets/figures/qrng-noise-distribution.png" width="92%" alt="Two histograms of noise samples. As the code ran, values cluster near zero and near 3.5, nothing like the bell curve. After the fix, they follow the standard normal curve.">
 
-**Question:** which real satellite is a suitable target for a free-flying inspector, and how does the inspection mission behave in simulation?<br>
-**Approach:** a three-person SHE ORBITS 2026 team study: target-satellite selection supported by a decision-support workbook, then a GMAT simulation campaign and a design-status report.<br>
-**Stack:** `GMAT` `Excel` &nbsp;·&nbsp; no public repository<br>
-<sub>A summer-school concept study, not a flight programme; the reports are not public.</sub>
+The bits were stored as 8-bit integers, so shifting them by 8 or more places silently threw away half of every 16-bit block. Widening them to 32 bits fixes it (patch in [`documentation/fixes`](documentation/fixes)); the plots above use the fixed version. I also checked the Qiskit path: with the pinned `qiskit==2.2.3`, `from qiskit import Aer` fails, so the code quietly falls back to pseudo-random bits. Every run so far has therefore used classical randomness, and the quantum-versus-classical comparison I set out to make is still undone.
+
+### HELIO-OPS: a risk model for solar storms
+
+**Status:** teaching prototype. &nbsp;·&nbsp; **Code:** [HELIO-OPS-Guardian-System](https://github.com/shrashtimittal/HELIO-OPS-Guardian-System) &nbsp;·&nbsp; `Python` `Jupyter`
+
+A console program that turns a solar event into a risk score for each satellite: risk rises with the event's magnitude and the satellite's orbital exposure, and falls with its shielding. This is real output from one run:
+
+<img src="assets/figures/helio-terminal-output.png" width="82%" alt="Terminal output listing three solar events and, for each, risk scores for three satellites. The poorly shielded LEO satellite scores about 4.5; the well-shielded MEO satellite about 0.5.">
+
+The same three events give the well-shielded MEO satellite (shielding 0.9) a risk around 0.5 and the poorly shielded LEO one (0.27) around 4.5. The events are randomly generated, not real space-weather data, and the formula is a teaching model, not a validated one.
+
+### Smaller projects
+
+<details>
+<summary><b>Machine learning and software</b> (three repositories, plus a CubeSat project I haven't written up yet)</summary>
 
 <br>
 
-**More work**
+- **[ASL sign language detection](https://github.com/shrashtimittal/asl-sign-language-detection):** a 29-class image classifier (A to Z, space, delete, nothing) using EfficientNet-B0 transfer learning with a Streamlit upload page. Still images only; no accuracy figure is published yet. Training samples for letters A to D:
 
-| | |
-|:--|:--|
-| <img src="assets/projects/fraud.svg" width="140" alt="Fraud detection plate"> | **[Fraud Transaction Detection](https://github.com/shrashtimittal/fraud-transaction-detection)**<br>Logistic regression, random forest and XGBoost on simulated card transactions with class weighting. `scikit-learn` `XGBoost` |
-| <img src="assets/projects/asl.svg" width="140" alt="ASL classes plate"> | **[ASL Sign Language Detection](https://github.com/shrashtimittal/asl-sign-language-detection)**<br>EfficientNet-B0 transfer learning on 29 classes, still images, Streamlit interface. `PyTorch` `timm` |
-| <img src="assets/projects/animal.svg" width="140" alt="Animal classifier plate"> | **[Animal Image Classification](https://github.com/shrashtimittal/animal-image-classification)**<br>15-class EfficientNet-B0 classifier with a freeze-then-fine-tune schedule. `PyTorch` `timm` |
-| <img src="assets/projects/finance.svg" width="140" alt="Finance manager plate"> | **[Personal Finance Manager](https://github.com/shrashtimittal/personal-finance-manager-cli)**<br>CLI-first Python application with SQLite, budgets, CSV export and an optional PySide6 GUI. |
-| <img src="assets/projects/cubesat.svg" width="140" alt="CubeSat plate"> | **Smart CubeSat**<br>Satellite systems design project; public documentation to follow. |
+<img src="assets/figures/asl-dataset-samples.jpg" width="70%" alt="Grid of hand-sign photographs for the letters A, B, C and D, six examples each, taken in different lighting.">
 
-<sub>No accuracy figures are quoted for the machine-learning projects because the repositories do not publish them.</sub>
+- **[Animal image classification](https://github.com/shrashtimittal/animal-image-classification):** a 15-class classifier, also EfficientNet-B0, with a freeze-then-fine-tune schedule. Accuracy not yet reported.
+- **[Fraud transaction detection](https://github.com/shrashtimittal/fraud-transaction-detection):** logistic regression, random forest and XGBoost on a simulated transaction dataset with class weighting. No metrics published yet.
+- **[Personal finance manager](https://github.com/shrashtimittal/personal-finance-manager-cli):** a Python command-line budgeting tool with SQLite and an optional PySide6 GUI. Not aerospace, but it taught me how to structure a program.
+- **Smart CubeSat:** a satellite systems design project; the write-up isn't ready.
 
-<a name="robotics"></a>
-<img src="assets/sections/robotics.svg" width="100%" alt="03 Robotics and embedded">
+</details>
 
-<img src="assets/icons/robotics.svg" width="36" alt="">
+## Robotics and embedded
 
-I work with flight-controller and microcontroller platforms for UAV and robotic systems, integrating sensors and writing embedded code in `C/C++` and `Python`.
+I have worked with Pixhawk flight controllers, Raspberry Pi, Arduino, ESP32 and STM32 boards, mainly around sensor integration and small autonomous systems. I am still organising this work into project write-ups, so I have left out hardware images rather than use a generic placeholder.
 
-| Layer | Platforms |
-|:--|:--|
-| Flight control | `Pixhawk` |
-| Onboard computing | `Raspberry Pi` |
-| Microcontrollers | `Arduino` `ESP32` `STM32` |
-| Focus | Sensor integration, embedded development, autonomy |
+## Research
 
-<sub>Hardware project write-ups will be added here once documented for public release.</sub>
+I'm interested in astrophysics and dark matter, orbital and navigation concepts, quantum entanglement and theoretical physics, and spacecraft systems and mission engineering.
 
-<a name="research"></a>
-<img src="assets/sections/research.svg" width="100%" alt="04 Research">
+Nothing is listed on this page yet, and I don't want to blur that. When something goes up, each entry will carry exactly one of these labels: *published (peer-reviewed)*, *conference presentation*, *submitted manuscript*, *ongoing independent research* or *exploratory theoretical work*, with its abstract, PDF and DOI where they exist.
 
-**Themes:** astrophysics and dark matter &nbsp;·&nbsp; orbital and navigation concepts &nbsp;·&nbsp; quantum entanglement and theoretical physics &nbsp;·&nbsp; spacecraft systems and mission engineering.
+## Toolbox
 
-Every entry is labelled with exactly one status: **published**, **conference presentation**, **submitted manuscript**, **ongoing independent research** or **exploratory theoretical work**. Nothing unpublished is presented as peer-reviewed, and no peer-reviewed publication is claimed on this page. Entries appear here with their abstract, PDF and DOI as they become public.
+Day to day I write Python (NumPy, SciPy, pandas, Matplotlib, Jupyter) and some C/C++. For mission analysis I use GMAT, and I used Qiskit in one project (see the note above). For machine learning it's PyTorch, scikit-learn and XGBoost. On the embedded side: Pixhawk, Raspberry Pi, Arduino, ESP32 and STM32. Everything lives in Git and GitHub.
 
-<a name="skills"></a>
-<img src="assets/sections/skills.svg" width="100%" alt="05 Technical skills">
+## Contact
 
-| Domain | Tools |
-|:--|:--|
-| **Programming and scientific computing** | `Python` `C/C++` `NumPy` `SciPy` `pandas` `Matplotlib` `Jupyter` |
-| **Aerospace and mission simulation** | `GMAT` `Qiskit` Kalman filtering, Keplerian orbit simulation |
-| **Robotics and embedded** | `Pixhawk` `Raspberry Pi` `Arduino` `ESP32` `STM32` |
-| **AI and machine learning** | `PyTorch` `scikit-learn` `XGBoost` `timm` `OpenCV` |
-| **Workflow** | `Git` `GitHub` `Streamlit` `SQLite` `pytest` |
+GitHub: [github.com/shrashtimittal](https://github.com/shrashtimittal). If something here interests you, an issue or a discussion on the relevant repository is the quickest way to reach me.
 
-<a name="activity"></a>
-<img src="assets/sections/activity.svg" width="100%" alt="06 GitHub activity">
-
-<div align="center">
-<img src="assets/stats/repo-composition.svg" width="100%" alt="Source composition of the featured repositories: mostly Python, with Jupyter notebooks, QSS and SQL.">
-</div>
-
-<sub>A static snapshot of the featured repositories; live activity is on <a href="https://github.com/shrashtimittal">my GitHub profile</a>.</sub>
-
-<a name="contact"></a>
-<img src="assets/sections/contact.svg" width="100%" alt="07 Contact">
-
-<table>
-<tr>
-<td width="72" valign="middle"><img src="assets/brand/monogram.svg" width="56" alt="SM monogram"></td>
-<td valign="middle"><b>Shrashti Mittal</b><br>GitHub: <a href="https://github.com/shrashtimittal">github.com/shrashtimittal</a><br><sub>For research or engineering collaboration, open an issue or discussion on any repository above.</sub></td>
-</tr>
-</table>
-
-<!-- Add after confirming what you want public:
+<!-- Add once you decide what to make public:
 LinkedIn: ...   Email: ...   ORCID: ...   Google Scholar: ...
 -->
 
-<div align="center">
-<img src="assets/dividers/divider.svg" width="60%" alt="">
-</div>
+<sub>Plots and terminal output are from the documented simulation runs and project outputs. Their limitations are described alongside each figure.</sub>

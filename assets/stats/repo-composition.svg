@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 254" width="640" height="254" role="img" aria-label="Source-line composition of the six featured repositories">
+<rect width="640" height="254" rx="10" fill="#0B1424"/>
+<text x="28" y="40" font-family="Consolas,monospace" font-size="11" letter-spacing="2" fill="#B98355">SOURCE COMPOSITION · FEATURED REPOSITORIES</text>
+<text x="28" y="60" font-family="Georgia,serif" font-style="italic" font-size="13" fill="#CDB98F">Non-blank source lines by language (static snapshot)</text>
+<text x="28" y="103" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#F3EEE4">Python</text><rect x="200" y="90" width="293" height="14" rx="2" fill="#6FA8A3" fill-opacity="1"/><text x="503" y="102" font-family="Consolas,monospace" font-size="12" fill="#7F93AB">89% · 5,900 lines</text>
+<text x="28" y="137" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#F3EEE4">Jupyter Notebook</text><rect x="200" y="124" width="26" height="14" rx="2" fill="#7F93AB" fill-opacity="0.7"/><text x="236" y="136" font-family="Consolas,monospace" font-size="12" fill="#7F93AB">8% · 520 lines</text>
+<text x="28" y="171" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#F3EEE4">Qt stylesheet (QSS)</text><rect x="200" y="158" width="9" height="14" rx="2" fill="#7F93AB" fill-opacity="0.7"/><text x="219" y="170" font-family="Consolas,monospace" font-size="12" fill="#7F93AB">3% · 184 lines</text>
+<text x="28" y="205" font-family="Helvetica,Arial,sans-serif" font-size="13" fill="#F3EEE4">SQL</text><rect x="200" y="192" width="3" height="14" rx="2" fill="#7F93AB" fill-opacity="0.7"/><text x="213" y="204" font-family="Consolas,monospace" font-size="12" fill="#7F93AB">1% · 35 lines</text>
+<text x="28" y="236" font-family="Consolas,monospace" font-size="10" fill="#7F93AB">Generated 2026-11-01 from public repositories · regenerate with tools/make_repo_stats.py</text></svg>

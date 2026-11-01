@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 46" width="480" height="46" role="img" aria-label="04 Research">
+<rect width="480" height="46" rx="6" fill="#0B1424"/><path d="M0 .5H480" stroke="#C08A5C" stroke-opacity=".55"/>
+<text x="16" y="29" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', monospace" font-size="13" letter-spacing="1.5" fill="#C08A5C">04</text>
+<text x="50" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#F3EEE4">Research</text>
+<path d="M161 23H452" stroke="#7F93AB" stroke-opacity=".4"/><circle cx="462" cy="23" r="3.4" fill="none" stroke="#6FA8A3"/><circle cx="462" cy="23" r="1.2" fill="#C08A5C"/></svg>

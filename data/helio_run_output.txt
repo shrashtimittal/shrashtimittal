@@ -1,0 +1,185 @@
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: 3 solar events generated.
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: Invalid choice.
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: 3 satellites generated.
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: Invalid choice.
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: 
+--- ALL EVENTS vs ALL SATELLITES ---
+
+Event: Auto-750 | sunspot | Mag 6.5 | 2025-01-24 | Moderate
+  SAT-146 → Risk=0.52, Level=Low
+  SAT-521 → Risk=1.96, Level=Low
+  SAT-104 → Risk=4.75, Level=Moderate
+
+Event: Auto-601 | cme | Mag 5.8 | 2025-05-10 | Moderate
+  SAT-146 → Risk=0.46, Level=Low
+  SAT-521 → Risk=1.75, Level=Low
+  SAT-104 → Risk=4.23, Level=Moderate
+
+Event: Auto-494 | flare | Mag 6.0 | 2025-12-12 | Moderate
+  SAT-146 → Risk=0.48, Level=Low
+  SAT-521 → Risk=1.81, Level=Low
+  SAT-104 → Risk=4.38, Level=Moderate
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: 
+--- SPACE WEATHER DASHBOARD ---
+Total events: 3
+Average magnitude: 6.10
+Event type counts: {'sunspot': 1, 'cme': 1, 'flare': 1}
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: 
+--- SATELLITE HEALTH CHECK ---
+Strongest event: Auto-750 | sunspot | Mag 6.5 | 2025-01-24 | Moderate
+
+SAT-146 | MEO | Shield 0.9 | SafeMode: False
+  Risk level: Low
+  Recommended action: Normal operations.
+
+SAT-521 | LEO | Shield 0.65 | SafeMode: False
+  Risk level: Low
+  Recommended action: Normal operations.
+
+SAT-104 | LEO | Shield 0.27 | SafeMode: False
+  Risk level: Moderate
+  Recommended action: Reduce power and monitor closely.
+
+
+=== HELIO-OPS Guardian System (HOGS) ===
+1. List solar events
+2. Add solar event
+3. Auto-generate solar events
+4. List satellites
+5. Add satellite
+6. Auto-generate satellites
+7. Assess risk for one event
+8. Assess risk for all events
+9. Space weather dashboard
+10. Satellite health check
+11. Save data
+12. Load data
+13. Toggle satellite safe mode
+0. Exit
+
+Enter choice: Exiting HELIO-OPS Guardian System.

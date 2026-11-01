@@ -9,9 +9,9 @@ I'm Shrashti, an aerospace engineer pursuing a Master's in Space and Astronautic
 
 ## On my workbench
 
-- **Now:** pursuing the MSc in Space and Astronautical Engineering at Sapienza University of Rome (2026–2028).
-- **Current focus:** documenting selected software, simulation and research work clearly, including what is implemented and what remains exploratory.
-- **Still to document:** more of my hands-on robotics and embedded-systems work.
+- **Now:** settling into the MSc at Sapienza (2026–2028).
+- **Just finished:** the SHE ORBITS 2026 Space Exploration Summer School, where a team of three of us studied how a small inspector satellite could look at Landsat 7 (below).
+- **Where this page is thin:** hardware. I work with Pixhawk, ESP32 and STM32 boards, but none of that is written up here yet.
 
 <!-- Edit this list whenever it changes. Only list things that are true today. -->
 
@@ -36,6 +36,16 @@ The raw measurements are off by about 1.5 m on average; the filter's estimate is
 <img src="assets/figures/qrng-noise-distribution.png" width="92%" alt="Two histograms of noise samples. As the code ran, values cluster near zero and near 3.5, nothing like the bell curve. After the fix, they follow the standard normal curve.">
 
 The bits were stored as 8-bit integers, so shifting them by 8 or more places silently threw away half of every 16-bit block. Widening them to 32 bits fixes it (patch in [`documentation/fixes`](documentation/fixes)); the plots above use the fixed version. I also checked the Qiskit path: with the pinned `qiskit==2.2.3`, `from qiskit import Aer` fails, so the code quietly falls back to pseudo-random bits. Every run so far has therefore used classical randomness, and the quantum-versus-classical comparison I set out to make is still undone.
+
+### Team Mimosa: looking at a dead satellite
+
+**Status:** concept study from the summer school, finished; reports not public. &nbsp;·&nbsp; `GMAT` `Excel`
+
+The idea: a small inspector satellite flies close to a real object, follows a path around it, observes it, and leaves without ever touching it. Our target is Landsat 7, which is retired, can't manoeuvre and doesn't communicate, on an orbit of roughly 688 km.
+
+We began by choosing the target, because changing it later would redo everything downstream. Ten candidates were scored on eleven criteria by the three of us independently, using only agency documents and peer-reviewed sources, and an "unknown" was never allowed to score well. Then came a simulation campaign (SIM 01 to SIM 22). An early candidate, a 100 m stand-off with 0.20 of an orbit for the capture, reached 93% against a required 95%, and we did not freeze it. Re-optimising with J2 and drag in the model changed the answer: the final design uses an 80 m stand-off, 0.25 of an orbit for capture, a 4 kg inspector starting 2 km away and about 6.5 hours of natural drift.
+
+<img src="assets/placeholders/mimosa-gmat-figure.png" width="100%" alt="Placeholder: a GMAT trajectory figure of the inspector around Landsat 7 will be added here.">
 
 ### HELIO-OPS: a risk model for solar storms
 
@@ -67,7 +77,9 @@ The same three events give the well-shielded MEO satellite (shielding 0.9) a ris
 
 ## Robotics and embedded
 
-I have worked with Pixhawk flight controllers, Raspberry Pi, Arduino, ESP32 and STM32 boards, mainly around sensor integration and small autonomous systems. I am still organising this work into project write-ups, so I have left out hardware images rather than use a generic placeholder.
+I work with Pixhawk flight controllers, Raspberry Pi, Arduino, ESP32 and STM32 boards, mostly on sensor integration and small autonomous systems. This is the least documented part of my work so far, which is why there is a placeholder below instead of a polished story.
+
+<img src="assets/placeholders/hardware-photo.png" width="100%" alt="Placeholder: a photo of the bench setup or a flight-controller wiring diagram will be added here.">
 
 ## Research
 
@@ -87,4 +99,4 @@ GitHub: [github.com/shrashtimittal](https://github.com/shrashtimittal). If somet
 LinkedIn: ...   Email: ...   ORCID: ...   Google Scholar: ...
 -->
 
-<sub>Plots and terminal output are from the documented simulation runs and project outputs. Their limitations are described alongside each figure.</sub>
+<sub>Plots and terminal output on this page come from running the code in the linked repositories. Placeholders are labelled as such.</sub>
